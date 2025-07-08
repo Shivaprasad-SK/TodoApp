@@ -13,19 +13,27 @@ const mongoURL = process.env.MongoURL;
 app.use(cors());
 app.use(express.json());
 
-mongoose
-  .connect(mongoURL)
-  .then(() => {
-    console.log("Connected to MongoDB");
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB:", err);
+// mongoose
+//   .connect(mongoURL)
+//   .then(() => {
+//     console.log("Connected to MongoDB");
+//     app.listen(PORT, () => {
+//       console.log(`Server running on port ${PORT}`);
+//     });
+//   })
+//   .catch((err) => {
+//     console.error("Error connecting to MongoDB:", err);
+//     process.exit(1);
+//   });
+(async () => {
+  try {
+    await mongoose.connect(mongoURL);
+    console.log("MongoDB connected successfully");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
     process.exit(1);
-  });
-
+  }
+})();
 app.get("/get", async (req, res) => {
   try {
     const todos = await TodoModel.find();
