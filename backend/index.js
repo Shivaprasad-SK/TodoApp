@@ -6,7 +6,7 @@ const TodoModel = require("./Models/Todo");
 const cors = require("cors");
 
 const PORT = process.env.PORT;
-const mongoURL = process.env.MongoURL;
+const mongoURL = process.env.MongoURL || 5000;
 
 // Define routes and middleware here
 // ...
