@@ -29,6 +29,9 @@ app.use(express.json());
   try {
     await mongoose.connect(mongoURL);
     console.log("MongoDB connected successfully");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   } catch (err) {
     console.error("MongoDB connection error:", err);
     process.exit(1);
