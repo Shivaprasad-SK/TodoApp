@@ -10,7 +10,7 @@ const mongoURL = process.env.MongoURL || 5000;
 
 // Define routes and middleware here
 // ...
-app.use(cors());
+app.use(cors("https://todo-app-sooty-phi.vercel.app/"));
 app.use(express.json());
 
 // mongoose
